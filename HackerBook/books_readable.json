@@ -1,0 +1,16 @@
+[
+    {
+        "authors": "Allen B. Downey",
+        "image_url": "http://hackershelf.com/media/cache/97/bf/97bfce708365236e0a5f3f9e26b4a796.jpg",
+        "pdf_url": "http://greenteapress.com/compmod/thinkcomplexity.pdf",
+        "tags": "programming",
+        "title": "Think Complexity"
+    },
+    {
+        "authors": "Allen B. Downey",
+        "image_url": "http://hackershelf.com/media/cache/46/61/46613d24474140c53ea6b51386f888ff.jpg",
+        "pdf_url": "http://greenteapress.com/thinkstats/thinkstats.pdf",
+        "tags": "programming",
+        "title": "Think Stats"
+    }
+]

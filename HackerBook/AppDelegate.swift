@@ -15,7 +15,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        do{
+            let booksJson = try loadFromLocalFile(fileName: "books_readable.json")
+            
+            let library = try decodeBooks(books: booksJson)
+            
+            let tag = Tag(name: "programming")
+            var tags = Set<Tag>()
+            tags.insert(tag)
+            
+            print(tags.count)
+            
+            let model = Library(books: library, tags: tags)
+            
+            let uVC = LibraryTableViewController(model: model)
+            let uNav = UINavigationController(rootViewController: uVC)
+            
+            window?.rootViewController = uNav
+            
+            /*
+            let forceSensitives = try decodeCharacters(forceSensitives: forceSensitivesJson)
+            
+            let model = StarWarsUniverse(regularCharacters: regularCharacters, forceSensitives: forceSensitives)
+            
+            let uVC = StarWarsUniverseTableViewController(model: model)
+            let uNav = UINavigationController(rootViewController: uVC)
+            
+            let charVC = CharacterViewController(model: try model.character(atIndex: 0, forAffiliation: .galacticEmpire)!)
+            
+            let cNav = UINavigationController(rootViewController: charVC)
+            
+            uVC.delegate = charVC
+            
+            let splitVC = UISplitViewController()
+            splitVC.viewControllers = [uNav, cNav]
+            
+            window?.rootViewController = splitVC
+            */
+            window?.makeKeyAndVisible()
+            
+        }catch{
+            fatalError("ERROR FATAL")
+        }
+        
         return true
     }
 
