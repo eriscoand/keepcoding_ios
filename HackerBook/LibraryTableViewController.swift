@@ -16,19 +16,20 @@ class LibraryTableViewController: UITableViewController {
     
     let model: Library
     
-    //weak var delegate: StarWarsUniverseTableViewControllerDelegate? = nil
+    weak var delegate: LibraryTableViewControllerDelegate? = nil
     
     init(model: Library){
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func reloadLibrary(){
+        model.loadLibrary()
+        self.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -36,15 +37,10 @@ class LibraryTableViewController: UITableViewController {
         let tag  = getTag(forSection: indexPath.section)
         
         do{
-            //if let book = try model.book(atIndex: indexPath.row, forTag: tag){
-                //let vC = CharacterViewController(model: modelCharacter)
-                //self.navigationController?.pushViewController(vC, animated: true)
-                
-                //delegate?.universeTableViewController(self, didSelectCharacter: modelCharacter)
-                
-                //notify(characterChanged: modelCharacter)
-                
-            //}
+            if let book = try model.book(atIndex: indexPath.row, forTag: tag){
+                delegate?.libraryTableViewController(self, didSelectBook: book)
+                notify(bookChanged: book)
+            }
         }catch{
             fatalError("ERROR FATAL")
         }
@@ -83,6 +79,7 @@ class LibraryTableViewController: UITableViewController {
             
             cell?.imageView?.image = UIImage.init(data: (book?.thumbnail)!)
             cell?.textLabel?.text = book?.title
+            cell?.detailTextLabel?.text = book?.authorsString
             
         }catch{
             fatalError("ERROR FATAL")
@@ -97,5 +94,31 @@ class LibraryTableViewController: UITableViewController {
         return model.tags[section]
         
     }
+}
+
+extension LibraryTableViewController : BookViewControllerDelegate{
+    
+    func bookViewController(_ uVC: BookViewController){
+        reloadLibrary()
+    }
+    
+}
+
+protocol LibraryTableViewControllerDelegate : class{
+    
+    func libraryTableViewController(_ uVC: LibraryTableViewController, didSelectBook book : Book)
+    
+}
+
+extension LibraryTableViewController{
+    
+    func notify(bookChanged book : Book){
+        
+        let nc = NotificationCenter.default
+        let notification = Notification(name: LibraryTableViewController.notificacionName, object: self, userInfo: [LibraryTableViewController.bookKey : book])
+        
+        nc.post(notification)
+    }
+    
 }
 

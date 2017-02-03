@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		335AEE221E44EC9D008A7174 /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEE211E44EC9D008A7174 /* Favourites.swift */; };
+		335AEE251E4540E7008A7174 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEE231E4540E7008A7174 /* PDFViewController.swift */; };
+		335AEE261E4540E7008A7174 /* PDFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 335AEE241E4540E7008A7174 /* PDFViewController.xib */; };
 		33A1F18F1E411B60007103E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F18E1E411B60007103E4 /* AppDelegate.swift */; };
 		33A1F1911E411B60007103E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F1901E411B60007103E4 /* ViewController.swift */; };
 		33A1F1941E411B60007103E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1921E411B60007103E4 /* Main.storyboard */; };
@@ -23,13 +26,18 @@
 		33A1F1B71E414EB1007103E4 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F1B61E414EB1007103E4 /* Author.swift */; };
 		33A1F1BB1E4154A3007103E4 /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F1B91E4154A3007103E4 /* LibraryTableViewController.swift */; };
 		33A1F1BC1E4154A3007103E4 /* LibraryTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1BA1E4154A3007103E4 /* LibraryTableViewController.xib */; };
-		33A1F1C01E415530007103E4 /* books_readable.json in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1BF1E415530007103E4 /* books_readable.json */; };
 		33A1F1C61E42ACF0007103E4 /* bacon_ipsum.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1C51E42ACF0007103E4 /* bacon_ipsum.pdf */; };
 		33A1F1C81E42AD3B007103E4 /* bacon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1C71E42AD3B007103E4 /* bacon.jpg */; };
 		33A1F1CA1E42C3CC007103E4 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F1C91E42C3CC007103E4 /* Files.swift */; };
+		33A1F1CC1E44CE0D007103E4 /* CONSTANTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F1CB1E44CE0D007103E4 /* CONSTANTS.swift */; };
+		33A1F1CF1E44D254007103E4 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F1CD1E44D254007103E4 /* BookViewController.swift */; };
+		33A1F1D01E44D254007103E4 /* BookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1CE1E44D254007103E4 /* BookViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		335AEE211E44EC9D008A7174 /* Favourites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
+		335AEE231E4540E7008A7174 /* PDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
+		335AEE241E4540E7008A7174 /* PDFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFViewController.xib; sourceTree = "<group>"; };
 		33A1F18B1E411B60007103E4 /* HackerBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A1F18E1E411B60007103E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33A1F1901E411B60007103E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,10 +56,12 @@
 		33A1F1B61E414EB1007103E4 /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		33A1F1B91E4154A3007103E4 /* LibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
 		33A1F1BA1E4154A3007103E4 /* LibraryTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryTableViewController.xib; sourceTree = "<group>"; };
-		33A1F1BF1E415530007103E4 /* books_readable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = books_readable.json; sourceTree = "<group>"; };
 		33A1F1C51E42ACF0007103E4 /* bacon_ipsum.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bacon_ipsum.pdf; sourceTree = "<group>"; };
 		33A1F1C71E42AD3B007103E4 /* bacon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bacon.jpg; sourceTree = "<group>"; };
 		33A1F1C91E42C3CC007103E4 /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
+		33A1F1CB1E44CE0D007103E4 /* CONSTANTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CONSTANTS.swift; sourceTree = "<group>"; };
+		33A1F1CD1E44D254007103E4 /* BookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		33A1F1CE1E44D254007103E4 /* BookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +124,7 @@
 				33A1F1A41E411DCE007103E4 /* Library.swift */,
 				33A1F1A61E411EE9007103E4 /* Tag.swift */,
 				33A1F1B61E414EB1007103E4 /* Author.swift */,
+				335AEE211E44EC9D008A7174 /* Favourites.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -126,6 +137,7 @@
 				33A1F1AF1E413D19007103E4 /* Errors.swift */,
 				33A1F1B41E4147F6007103E4 /* JSONProcessing.swift */,
 				33A1F1C91E42C3CC007103E4 /* Files.swift */,
+				33A1F1CB1E44CE0D007103E4 /* CONSTANTS.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -143,6 +155,10 @@
 			children = (
 				33A1F1B91E4154A3007103E4 /* LibraryTableViewController.swift */,
 				33A1F1BA1E4154A3007103E4 /* LibraryTableViewController.xib */,
+				33A1F1CD1E44D254007103E4 /* BookViewController.swift */,
+				33A1F1CE1E44D254007103E4 /* BookViewController.xib */,
+				335AEE231E4540E7008A7174 /* PDFViewController.swift */,
+				335AEE241E4540E7008A7174 /* PDFViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -152,17 +168,8 @@
 			children = (
 				33A1F1C71E42AD3B007103E4 /* bacon.jpg */,
 				33A1F1C51E42ACF0007103E4 /* bacon_ipsum.pdf */,
-				33A1F1BE1E41551D007103E4 /* JSON */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		33A1F1BE1E41551D007103E4 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				33A1F1BF1E415530007103E4 /* books_readable.json */,
-			);
-			name = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,12 +232,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A1F1C81E42AD3B007103E4 /* bacon.jpg in Resources */,
-				33A1F1C01E415530007103E4 /* books_readable.json in Resources */,
 				33A1F1991E411B61007103E4 /* LaunchScreen.storyboard in Resources */,
+				33A1F1D01E44D254007103E4 /* BookViewController.xib in Resources */,
 				33A1F1961E411B61007103E4 /* Assets.xcassets in Resources */,
 				33A1F1941E411B60007103E4 /* Main.storyboard in Resources */,
 				33A1F1C61E42ACF0007103E4 /* bacon_ipsum.pdf in Resources */,
 				33A1F1BC1E4154A3007103E4 /* LibraryTableViewController.xib in Resources */,
+				335AEE261E4540E7008A7174 /* PDFViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,16 +250,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				33A1F1911E411B60007103E4 /* ViewController.swift in Sources */,
+				33A1F1CC1E44CE0D007103E4 /* CONSTANTS.swift in Sources */,
 				33A1F1AA1E4121D3007103E4 /* MultiDictionary.swift in Sources */,
+				335AEE221E44EC9D008A7174 /* Favourites.swift in Sources */,
 				33A1F1A51E411DCE007103E4 /* Library.swift in Sources */,
 				33A1F1AC1E412EAA007103E4 /* AyncData.swift in Sources */,
 				33A1F1B51E4147F6007103E4 /* JSONProcessing.swift in Sources */,
 				33A1F1B01E413D19007103E4 /* Errors.swift in Sources */,
 				33A1F1BB1E4154A3007103E4 /* LibraryTableViewController.swift in Sources */,
+				335AEE251E4540E7008A7174 /* PDFViewController.swift in Sources */,
 				33A1F1A71E411EE9007103E4 /* Tag.swift in Sources */,
 				33A1F1B71E414EB1007103E4 /* Author.swift in Sources */,
 				33A1F18F1E411B60007103E4 /* AppDelegate.swift in Sources */,
 				33A1F1CA1E42C3CC007103E4 /* Files.swift in Sources */,
+				33A1F1CF1E44D254007103E4 /* BookViewController.swift in Sources */,
 				33A1F1A31E411BDD007103E4 /* Book.swift in Sources */,
 				33A1F1B31E4147BE007103E4 /* FoundationExtensions.swift in Sources */,
 			);
@@ -415,6 +427,7 @@
 				33A1F19F1E411B61007103E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

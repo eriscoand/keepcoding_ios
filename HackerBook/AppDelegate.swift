@@ -19,7 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         do{
-            let booksJson = try loadFromLocalFile(fileName: "books_readable.json")
+            
+            var json_data = Data()
+            if (!fileAlreadyExists(stringUrl: CONSTANTS.JSON_URL)){
+                json_data = try saveToLocalStorage(stringUrl: CONSTANTS.JSON_URL)
+            }else{
+                json_data = try dataFromStringUrl(stringUrl: CONSTANTS.JSON_URL)
+            }
+            
+            let booksJson = try jsonLoadFromData(dataInput: json_data)
             
             let books = try decodeBooks(books: booksJson)
             
@@ -30,27 +38,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let uVC = LibraryTableViewController(model: model)
             let uNav = UINavigationController(rootViewController: uVC)
             
-            window?.rootViewController = uNav
+            //find first tag with one or more book
+            var indexTag = 0
+            for tag in model.tags{
+                if let b = model.dict[tag] {
+                    if(b.count == 0){
+                        indexTag += 1
+                    }else{
+                        break
+                    }
+                }
+            }
             
-            /*
-            let forceSensitives = try decodeCharacters(forceSensitives: forceSensitivesJson)
+            let bookVC = BookViewController(model: try model.book(atIndex: 0, forTag: model.tags[indexTag] )!)
             
-            let model = StarWarsUniverse(regularCharacters: regularCharacters, forceSensitives: forceSensitives)
+            let cNav = UINavigationController(rootViewController: bookVC)
             
-            let uVC = StarWarsUniverseTableViewController(model: model)
-            let uNav = UINavigationController(rootViewController: uVC)
-            
-            let charVC = CharacterViewController(model: try model.character(atIndex: 0, forAffiliation: .galacticEmpire)!)
-            
-            let cNav = UINavigationController(rootViewController: charVC)
-            
-            uVC.delegate = charVC
+            uVC.delegate = bookVC
+            bookVC.delegate = uVC
             
             let splitVC = UISplitViewController()
             splitVC.viewControllers = [uNav, cNav]
             
             window?.rootViewController = splitVC
-            */
             window?.makeKeyAndVisible()
             
         }catch{

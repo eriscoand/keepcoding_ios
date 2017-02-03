@@ -19,17 +19,18 @@ func decodeBook(book json: JSONDictonary) throws -> Book {
     
     var image = Data()
     
-    guard let urlImageString = json["image_url"] as? String else{
-        throw HackerBookError.wrongJsonFormat
-    }
-    
-    if (!fileAlreadyExists(stringUrl: urlImageString)){
-        image = try saveToLocalStorage(stringUrl: urlImageString)
+    if let urlImageString = json["image_url"] as? String {
+        if (!fileAlreadyExists(stringUrl: urlImageString)){
+            image = try saveToLocalStorage(stringUrl: urlImageString)
+        }else{
+            image = try dataFromStringUrl(stringUrl: urlImageString)
+        }
     }else{
+        let urlImageString = CONSTANTS.DEFAULT_IMAGE
         image = try dataFromStringUrl(stringUrl: urlImageString)
     }
-
-    let defaultPDFURLString = "bacon_ipsum.pdf"
+    
+    let defaultPDFURLString = CONSTANTS.DEFAULT_PDF
     guard let defaultPDFURL = Bundle.main.url(forResource: defaultPDFURLString),
         let pdf = try? Data(contentsOf: defaultPDFURL) else{
             throw HackerBookError.resourcePointedByUrlNotReachable
@@ -41,12 +42,12 @@ func decodeBook(book json: JSONDictonary) throws -> Book {
     
     var authors = Set<Author>()
     if let authorsString = json["authors"] as? String{
-        authors = Author.by(s: authorsString)
+        authors = Author.fromStringToSet(s: authorsString)
     }
     
     var tags = Set<Tag>()
     if let tagsString = json["tags"] as? String{
-        tags = Tag.by(s: tagsString)
+        tags = Tag.fromStringToSet(s: tagsString)
     }
     
     return Book(title: title,
@@ -79,11 +80,9 @@ func decodeTags(forBooks books: Set<Book>) throws -> Set<Tag>{
     
 }
 
-func loadFromLocalFile(fileName name: String, bundle: Bundle = Bundle.main) throws -> JSONArray{
+func jsonLoadFromData(dataInput data: Data) throws -> JSONArray{
     
-    if let url = bundle.url(forResource: name),
-        let data = try? Data(contentsOf: url),
-        let maybeArray = try? JSONSerialization.jsonObject(with: data,
+    if let maybeArray = try? JSONSerialization.jsonObject(with: data,
                                                            options: JSONSerialization.ReadingOptions.mutableContainers) as? JSONArray,
         let array = maybeArray {
         return array

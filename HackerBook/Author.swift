@@ -41,7 +41,7 @@ class Author : Hashable  {
     }
     
     //MARK: - STATIC FUNC
-    static func by(s : String) -> Set<Author>{
+    static func fromStringToSet(s : String) -> Set<Author>{
         
         var ret = Set<Author>()
         

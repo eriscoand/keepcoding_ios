@@ -41,7 +41,7 @@ class Tag : Hashable  {
     }
     
     //MARK: - STATIC FUNC
-    static func by(s : String) -> Set<Tag>{
+    static func fromStringToSet(s : String) -> Set<Tag>{
         
         var ret = Set<Tag>()
         
@@ -56,10 +56,10 @@ class Tag : Hashable  {
         
     }
     
-    static func from(set s: Set<Tag>) -> [Tag]{
+    static func fromSetToArray(s: Set<Tag>) -> [Tag]{
         
         var ret = [Tag]()
-        var favouriteTag = Tag.init(name: "Favourite")
+        let favouriteTag = Tag.init(name: CONSTANTS.FAVOURITES_NAME)
         ret.append(favouriteTag)
         
         for tag in s.sorted(by: { (s1: Tag, s2: Tag) -> Bool in return s1 < s2 }){

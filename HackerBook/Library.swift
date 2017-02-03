@@ -27,25 +27,10 @@ class Library{
          tags: TagSet){
         
         self.books = books
-        self.tags = Tag.from(set: tags)
+        self.tags = Tag.fromSetToArray(s: tags)
         self.dict = BooksDictionary()
         
-        dict = self.makeEmptyTagsBooks(tags: self.tags)
-        
-        for tag in self.tags{
-            
-            var booksToInsert = BookSet()
-            
-            for book in books{
-                for tagInBook in book.tags{
-                    if(tagInBook == tag){
-                        booksToInsert.insert(book)
-                    }
-                }
-            }
-            dict[tag] = booksToInsert
-            
-        }
+        self.loadLibrary()
                 
     }
     
@@ -53,6 +38,36 @@ class Library{
         get{
             return tags.count
         }
+    }
+    
+    func loadLibrary(){
+        
+        dict = self.makeEmptyTagsBooks(tags: self.tags)
+        
+        for tag in self.tags{
+            
+            var booksToInsert = BookSet()
+            
+            if(tag == self.tags.first){
+                for book in books{
+                    if(Favourites.isFavourite(b: book)){
+                        booksToInsert.insert(book)
+                    }
+                }
+            }else{
+                for book in books{
+                    for tagInBook in book.tags{
+                        if(tagInBook == tag){
+                            booksToInsert.insert(book)
+                        }
+                    }
+                }
+            }
+            
+            dict[tag] = booksToInsert
+            
+        }
+        
     }
     
     func bookCount(forTag tag: Tag) -> Int{
@@ -85,7 +100,7 @@ class Library{
     }
     
     func tagName(_ tag: Tag) -> String{
-        return tag.name
+        return tag.name.capitalized
     }
     
     func makeEmptyTagsBooks(tags: TagArray) -> BooksDictionary{

@@ -25,6 +25,26 @@ class Book : Hashable {
         }
     }
     
+    var tagsString : String{
+        get{
+            var ret = ""
+            for tag in tags{
+                ret += tag.name + " - "
+            }
+            return ret
+        }
+    }
+    
+    var authorsString : String{
+        get{
+            var ret = ""
+            for author in authors{
+                ret += author.name + " - "
+            }
+            return ret
+        }
+    }
+    
     
     //MARK: - Initialization
     init(title: String,
@@ -53,7 +73,7 @@ class Book : Hashable {
         return proxieForEquality()
     }
     
-    //MARK: - STATIC FUNC    
+    //MARK: - STATIC FUNC
     static func from(array arr: [Book]) -> Set<Book>{
         var ret = Set<Book>()
         
