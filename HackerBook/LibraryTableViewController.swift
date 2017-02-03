@@ -6,6 +6,7 @@
 //  Copyright © 2017 ERISCO. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class LibraryTableViewController: UITableViewController {
@@ -20,6 +21,10 @@ class LibraryTableViewController: UITableViewController {
     init(model: Library){
         self.model = model
         super.init(nibName: nil, bundle: nil)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,11 +51,9 @@ class LibraryTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print(model.tagCount)
         return model.tagCount
     }
     
@@ -78,7 +81,7 @@ class LibraryTableViewController: UITableViewController {
                 cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
             }
             
-            cell?.imageView?.image = book?.thumbnail
+            cell?.imageView?.image = UIImage.init(data: (book?.thumbnail)!)
             cell?.textLabel?.text = book?.title
             
         }catch{
@@ -91,7 +94,8 @@ class LibraryTableViewController: UITableViewController {
     
     func getTag(forSection section: Int) -> Tag {
    
-        return model.tags[model.tags.index(model.tags.startIndex, offsetBy: 0)]
+        return model.tags[section]
         
     }
 }
+

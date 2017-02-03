@@ -48,12 +48,25 @@ class Tag : Hashable  {
         let arr = s.characters.split{$0 == ","}.map(String.init)
         
         for each in arr{
-            let tag = Tag(name: each)
+            let tag = Tag(name: each.trimmingCharacters(in: .whitespacesAndNewlines))
             ret.insert(tag)
         }
         
         return ret
         
+    }
+    
+    static func from(set s: Set<Tag>) -> [Tag]{
+        
+        var ret = [Tag]()
+        var favouriteTag = Tag.init(name: "Favourite")
+        ret.append(favouriteTag)
+        
+        for tag in s.sorted(by: { (s1: Tag, s2: Tag) -> Bool in return s1 < s2 }){
+            ret.append(tag)
+        }
+        
+        return ret
     }
     
 }
@@ -68,6 +81,9 @@ extension Tag : Comparable{
     
     public static func <(lhs: Tag, rhs: Tag) -> Bool{
         return (lhs.proxieForComparison() < rhs.proxieForComparison())
+    }
+    public static func >(lhs: Tag, rhs: Tag) -> Bool{
+        return (lhs.proxieForComparison() > rhs.proxieForComparison())
     }
     
 }

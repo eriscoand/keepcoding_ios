@@ -20,21 +20,19 @@ class Library{
     typealias BooksDictionary = MultiDictionary<Tag, Book>
     
     var books : BookSet
-    var tags : TagSet
+    var tags : TagArray
     var dict : BooksDictionary
     
     init(books: BookSet,
          tags: TagSet){
         
         self.books = books
-        self.tags = tags
+        self.tags = Tag.from(set: tags)
         self.dict = BooksDictionary()
         
-        dict = self.makeEmptyTagsBooks(tags: tags)
+        dict = self.makeEmptyTagsBooks(tags: self.tags)
         
-        print(tags.count)
-        
-        for tag in tags{
+        for tag in self.tags{
             
             var booksToInsert = BookSet()
             
@@ -45,17 +43,15 @@ class Library{
                     }
                 }
             }
-            
             dict[tag] = booksToInsert
             
         }
-        
+                
     }
-    
     
     var tagCount : Int{
         get{
-            return dict.count
+            return tags.count
         }
     }
     
@@ -92,7 +88,7 @@ class Library{
         return tag.name
     }
     
-    func makeEmptyTagsBooks(tags: TagSet) -> BooksDictionary{
+    func makeEmptyTagsBooks(tags: TagArray) -> BooksDictionary{
         
         var d = BooksDictionary()
         

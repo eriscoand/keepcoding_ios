@@ -14,49 +14,29 @@ typealias JSONDictonary = [String: JSONObject];
 typealias JSONArray = [JSONDictonary];
 
 
-/*
- {
- "authors": "Allen B. Downey",
- "image_url": "http://hackershelf.com/media/cache/97/bf/97bfce708365236e0a5f3f9e26b4a796.jpg",
- "pdf_url": "http://greenteapress.com/compmod/thinkcomplexity.pdf",
- "tags": "programming, python, data structures",
- "title": "Think Complexity"
- },
- 
- let title       :   String
- let authors     :   [String]
- let tags        :   Set<Tag>
- let thumbnail   :   UIImage
- let pdf         :   Data
- let isFavourite :   Bool
-  
- */
-
-
 //MARK: - Functions
 func decodeBook(book json: JSONDictonary) throws -> Book {
     
-    //guard let urlImage = json["image_url"] as? String,
-    guard let urlImage = "bookicon-default.png" as? String,
-          let image = UIImage(named:urlImage) else{
-            throw HackerBookError.resourcePointedByUrlNotReachable
+    var image = Data()
+    
+    guard let urlImageString = json["image_url"] as? String else{
+        throw HackerBookError.wrongJsonFormat
     }
     
-    //guard let urlPdf = json["pdf_url"] as? String,
-    guard let urlPdf = "thinkcomplexity.pdf" as? String,
-        let pdfUrl = Bundle.main.url(forResource: urlPdf),
-        let pdf = try? Data(contentsOf: pdfUrl) else{
-            throw HackerBookError.resourcePointedByUrlNotReachable
-    }
-    
-    var isFavourite = false
-    if let fav = json["isFavourite"] as? Bool{
-        isFavourite = fav
+    if (!fileAlreadyExists(stringUrl: urlImageString)){
+        image = try saveToLocalStorage(stringUrl: urlImageString)
+    }else{
+        image = try dataFromStringUrl(stringUrl: urlImageString)
     }
 
-    var title = ""
-    if let sTitle = json["title"] as? String{
-        title = sTitle
+    let defaultPDFURLString = "bacon_ipsum.pdf"
+    guard let defaultPDFURL = Bundle.main.url(forResource: defaultPDFURLString),
+        let pdf = try? Data(contentsOf: defaultPDFURL) else{
+            throw HackerBookError.resourcePointedByUrlNotReachable
+    }
+
+    guard let title = json["title"] as? String else{
+        throw HackerBookError.wrongJsonFormat
     }
     
     var authors = Set<Author>()
@@ -73,17 +53,29 @@ func decodeBook(book json: JSONDictonary) throws -> Book {
                 authors: authors,
                 tags: tags,
                 thumbnail: image,
-                pdf: pdf,
-                isFavourite: isFavourite)
+                pdf: pdf)
     
 }
 
-
 func decodeBooks(books json: JSONArray) throws -> Set<Book>{
     
-    let bookArray = try json.flatMap ({try decodeBook(book: $0)})
+    let bookArray = try json.flatMap({try decodeBook(book: $0)})
     
     return Book.from(array: bookArray)
+    
+}
+
+func decodeTags(forBooks books: Set<Book>) throws -> Set<Tag>{
+    
+    var tags = Set<Tag>()
+    
+    for book in books{
+        for tag in book.tags{
+            tags.insert(tag)
+        }
+    }
+    
+    return tags
     
 }
 

@@ -21,15 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do{
             let booksJson = try loadFromLocalFile(fileName: "books_readable.json")
             
-            let library = try decodeBooks(books: booksJson)
+            let books = try decodeBooks(books: booksJson)
             
-            let tag = Tag(name: "programming")
-            var tags = Set<Tag>()
-            tags.insert(tag)
+            let tags = try decodeTags(forBooks: books)
             
-            print(tags.count)
-            
-            let model = Library(books: library, tags: tags)
+            let model = Library(books: books, tags: tags)
             
             let uVC = LibraryTableViewController(model: model)
             let uNav = UINavigationController(rootViewController: uVC)

@@ -67,6 +67,7 @@ class  AsyncData {
     func loadAndSaveRemoteData(){
         
         if delegate?.asyncData(self, shouldStartLoadingFrom: url) == true {
+            
             DispatchQueue.global(qos: .default).async {
                 self.delegate?.asyncData(self, willStartLoadingFrom: self.url)
                 

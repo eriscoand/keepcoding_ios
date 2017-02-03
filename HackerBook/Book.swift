@@ -15,10 +15,8 @@ class Book : Hashable {
     let title       :   String
     let authors     :   Set<Author>
     let tags        :   Set<Tag>
-    let thumbnail   :   UIImage
+    let thumbnail   :   Data
     let pdf         :   Data
-    var isFavourite :   Bool
-    
     
     //MARK: - Computed Properties
     var hashValue : Int {
@@ -32,16 +30,14 @@ class Book : Hashable {
     init(title: String,
          authors: Set<Author>,
          tags: Set<Tag>,
-         thumbnail: UIImage,
-         pdf: Data,
-         isFavourite: Bool){
+         thumbnail: Data,
+         pdf: Data){
         
         self.title = title
         self.authors = authors
         self.tags = tags
         self.thumbnail = thumbnail
         self.pdf = pdf
-        self.isFavourite = isFavourite        
         
     }
     

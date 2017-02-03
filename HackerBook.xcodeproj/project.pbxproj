@@ -24,8 +24,9 @@
 		33A1F1BB1E4154A3007103E4 /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F1B91E4154A3007103E4 /* LibraryTableViewController.swift */; };
 		33A1F1BC1E4154A3007103E4 /* LibraryTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1BA1E4154A3007103E4 /* LibraryTableViewController.xib */; };
 		33A1F1C01E415530007103E4 /* books_readable.json in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1BF1E415530007103E4 /* books_readable.json */; };
-		33A1F1C21E415981007103E4 /* bookicon-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1C11E415981007103E4 /* bookicon-default.png */; };
-		33A1F1C41E415D17007103E4 /* thinkcomplexity.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1C31E415D17007103E4 /* thinkcomplexity.pdf */; };
+		33A1F1C61E42ACF0007103E4 /* bacon_ipsum.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1C51E42ACF0007103E4 /* bacon_ipsum.pdf */; };
+		33A1F1C81E42AD3B007103E4 /* bacon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1C71E42AD3B007103E4 /* bacon.jpg */; };
+		33A1F1CA1E42C3CC007103E4 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F1C91E42C3CC007103E4 /* Files.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +49,9 @@
 		33A1F1B91E4154A3007103E4 /* LibraryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
 		33A1F1BA1E4154A3007103E4 /* LibraryTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryTableViewController.xib; sourceTree = "<group>"; };
 		33A1F1BF1E415530007103E4 /* books_readable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = books_readable.json; sourceTree = "<group>"; };
-		33A1F1C11E415981007103E4 /* bookicon-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookicon-default.png"; sourceTree = "<group>"; };
-		33A1F1C31E415D17007103E4 /* thinkcomplexity.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = thinkcomplexity.pdf; sourceTree = "<group>"; };
+		33A1F1C51E42ACF0007103E4 /* bacon_ipsum.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = bacon_ipsum.pdf; sourceTree = "<group>"; };
+		33A1F1C71E42AD3B007103E4 /* bacon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bacon.jpg; sourceTree = "<group>"; };
+		33A1F1C91E42C3CC007103E4 /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				33A1F1AB1E412EAA007103E4 /* AyncData.swift */,
 				33A1F1AF1E413D19007103E4 /* Errors.swift */,
 				33A1F1B41E4147F6007103E4 /* JSONProcessing.swift */,
+				33A1F1C91E42C3CC007103E4 /* Files.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -147,8 +150,8 @@
 		33A1F1BD1E415515007103E4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				33A1F1C31E415D17007103E4 /* thinkcomplexity.pdf */,
-				33A1F1C11E415981007103E4 /* bookicon-default.png */,
+				33A1F1C71E42AD3B007103E4 /* bacon.jpg */,
+				33A1F1C51E42ACF0007103E4 /* bacon_ipsum.pdf */,
 				33A1F1BE1E41551D007103E4 /* JSON */,
 			);
 			name = Resources;
@@ -221,12 +224,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33A1F1C81E42AD3B007103E4 /* bacon.jpg in Resources */,
 				33A1F1C01E415530007103E4 /* books_readable.json in Resources */,
 				33A1F1991E411B61007103E4 /* LaunchScreen.storyboard in Resources */,
-				33A1F1C41E415D17007103E4 /* thinkcomplexity.pdf in Resources */,
 				33A1F1961E411B61007103E4 /* Assets.xcassets in Resources */,
-				33A1F1C21E415981007103E4 /* bookicon-default.png in Resources */,
 				33A1F1941E411B60007103E4 /* Main.storyboard in Resources */,
+				33A1F1C61E42ACF0007103E4 /* bacon_ipsum.pdf in Resources */,
 				33A1F1BC1E4154A3007103E4 /* LibraryTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +251,7 @@
 				33A1F1A71E411EE9007103E4 /* Tag.swift in Sources */,
 				33A1F1B71E414EB1007103E4 /* Author.swift in Sources */,
 				33A1F18F1E411B60007103E4 /* AppDelegate.swift in Sources */,
+				33A1F1CA1E42C3CC007103E4 /* Files.swift in Sources */,
 				33A1F1A31E411BDD007103E4 /* Book.swift in Sources */,
 				33A1F1B31E4147BE007103E4 /* FoundationExtensions.swift in Sources */,
 			);
