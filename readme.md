@@ -43,6 +43,6 @@ Hacer un reload de toda la tabla, en este caso no es tan preocupante. Creo recor
 - c) Se podria contactar con alguna editorial de revistas que quisiera publicar sus revistas en pdf a una app. Estos publicarian el json con cada una de las revistas que van publicando y se autopublicarian a la app. Al ser publicaciones no gratuïtas de una editorial, esta app se podria vender. 
 Podriamos hacer una versión lite con anuncios y menos funcionalidades como las notas y la actualización automática de libros. Y una versión PRO con todas las funcionalidads y sin anuncios
 
-
+#04/02/2017 - Falta ASYNCDATA 
 
 
