@@ -10,6 +10,9 @@
 		335AEE221E44EC9D008A7174 /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEE211E44EC9D008A7174 /* Favourites.swift */; };
 		335AEE251E4540E7008A7174 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEE231E4540E7008A7174 /* PDFViewController.swift */; };
 		335AEE261E4540E7008A7174 /* PDFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 335AEE241E4540E7008A7174 /* PDFViewController.xib */; };
+		335AEE281E45747D008A7174 /* readme.md in Sources */ = {isa = PBXBuildFile; fileRef = 335AEE271E45747D008A7174 /* readme.md */; };
+		335AEE2B1E457C57008A7174 /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335AEE291E457C57008A7174 /* BookTableViewCell.swift */; };
+		335AEE2C1E457C57008A7174 /* BookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 335AEE2A1E457C57008A7174 /* BookTableViewCell.xib */; };
 		33A1F18F1E411B60007103E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F18E1E411B60007103E4 /* AppDelegate.swift */; };
 		33A1F1911E411B60007103E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A1F1901E411B60007103E4 /* ViewController.swift */; };
 		33A1F1941E411B60007103E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33A1F1921E411B60007103E4 /* Main.storyboard */; };
@@ -38,6 +41,9 @@
 		335AEE211E44EC9D008A7174 /* Favourites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
 		335AEE231E4540E7008A7174 /* PDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		335AEE241E4540E7008A7174 /* PDFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFViewController.xib; sourceTree = "<group>"; };
+		335AEE271E45747D008A7174 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		335AEE291E457C57008A7174 /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		335AEE2A1E457C57008A7174 /* BookTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookTableViewCell.xib; sourceTree = "<group>"; };
 		33A1F18B1E411B60007103E4 /* HackerBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A1F18E1E411B60007103E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33A1F1901E411B60007103E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 		33A1F1821E411B60007103E4 = {
 			isa = PBXGroup;
 			children = (
+				335AEE271E45747D008A7174 /* readme.md */,
 				33A1F18D1E411B60007103E4 /* HackerBook */,
 				33A1F18C1E411B60007103E4 /* Products */,
 			);
@@ -159,6 +166,8 @@
 				33A1F1CE1E44D254007103E4 /* BookViewController.xib */,
 				335AEE231E4540E7008A7174 /* PDFViewController.swift */,
 				335AEE241E4540E7008A7174 /* PDFViewController.xib */,
+				335AEE291E457C57008A7174 /* BookTableViewCell.swift */,
+				335AEE2A1E457C57008A7174 /* BookTableViewCell.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 			files = (
 				33A1F1C81E42AD3B007103E4 /* bacon.jpg in Resources */,
 				33A1F1991E411B61007103E4 /* LaunchScreen.storyboard in Resources */,
+				335AEE2C1E457C57008A7174 /* BookTableViewCell.xib in Resources */,
 				33A1F1D01E44D254007103E4 /* BookViewController.xib in Resources */,
 				33A1F1961E411B61007103E4 /* Assets.xcassets in Resources */,
 				33A1F1941E411B60007103E4 /* Main.storyboard in Resources */,
@@ -257,8 +267,10 @@
 				33A1F1AC1E412EAA007103E4 /* AyncData.swift in Sources */,
 				33A1F1B51E4147F6007103E4 /* JSONProcessing.swift in Sources */,
 				33A1F1B01E413D19007103E4 /* Errors.swift in Sources */,
+				335AEE2B1E457C57008A7174 /* BookTableViewCell.swift in Sources */,
 				33A1F1BB1E4154A3007103E4 /* LibraryTableViewController.swift in Sources */,
 				335AEE251E4540E7008A7174 /* PDFViewController.swift in Sources */,
+				335AEE281E45747D008A7174 /* readme.md in Sources */,
 				33A1F1A71E411EE9007103E4 /* Tag.swift in Sources */,
 				33A1F1B71E414EB1007103E4 /* Author.swift in Sources */,
 				33A1F18F1E411B60007103E4 /* AppDelegate.swift in Sources */,

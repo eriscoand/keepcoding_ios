@@ -20,25 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         do{
             
-            var json_data = Data()
-            if (!fileAlreadyExists(stringUrl: CONSTANTS.JSON_URL)){
-                json_data = try saveToLocalStorage(stringUrl: CONSTANTS.JSON_URL)
-            }else{
-                json_data = try dataFromStringUrl(stringUrl: CONSTANTS.JSON_URL)
-            }
+            //Creating the model
             
+            //Getting the information from the external URL (Only if not loaded before)
+            let json_data = try getFileFrom(stringUrl: CONSTANTS.JSON_URL)
+            
+            //Books Json loading
             let booksJson = try jsonLoadFromData(dataInput: json_data)
             
+            //Decoding books
             let books = try decodeBooks(books: booksJson)
             
+            //Decoding tags
             let tags = try decodeTags(forBooks: books)
             
             let model = Library(books: books, tags: tags)
             
-            let uVC = LibraryTableViewController(model: model)
-            let uNav = UINavigationController(rootViewController: uVC)
-            
-            //find first tag with one or more book
+            //find first tag with one or more book (We need a correct book to create the split view)
             var indexTag = 0
             for tag in model.tags{
                 if let b = model.dict[tag] {
@@ -50,18 +48,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
-            let bookVC = BookViewController(model: try model.book(atIndex: 0, forTag: model.tags[indexTag] )!)
+            let uVC = LibraryTableViewController(model: model)
+            let uNav = UINavigationController(rootViewController: uVC)
+            let book = try model.book(atIndex: 0, forTag: model.tags[indexTag] )!
+            let bookVC = BookViewController(model: book)
             
             let cNav = UINavigationController(rootViewController: bookVC)
             
             uVC.delegate = bookVC
-            bookVC.delegate = uVC
             
-            let splitVC = UISplitViewController()
-            splitVC.viewControllers = [uNav, cNav]
+            if(UIDevice.current.userInterfaceIdiom == .pad){                
+                let splitVC = UISplitViewController()
+                splitVC.viewControllers = [uNav, cNav]
+                
+                window?.rootViewController = splitVC
+                window?.makeKeyAndVisible()
+            }else{
+                window?.rootViewController = uNav
+                window?.makeKeyAndVisible()
+            }
             
-            window?.rootViewController = splitVC
-            window?.makeKeyAndVisible()
             
         }catch{
             fatalError("ERROR FATAL")

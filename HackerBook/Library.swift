@@ -11,18 +11,26 @@ import UIKit
 
 class Library{
     
+    //MARK: - Typealias
     typealias BookArray = [Book]
     typealias TagArray = [Tag]
-    
     typealias BookSet = Set<Book>
     typealias TagSet = Set<Tag>
-    
     typealias BooksDictionary = MultiDictionary<Tag, Book>
     
+    //MARK: - Stored Properties
     var books : BookSet
     var tags : TagArray
     var dict : BooksDictionary
     
+    //MARK: - Computed Properties
+    var tagCount : Int{
+        get{
+            return tags.count
+        }
+    }
+    
+    //MARK: - Init and load
     init(books: BookSet,
          tags: TagSet){
         
@@ -31,30 +39,27 @@ class Library{
         self.dict = BooksDictionary()
         
         self.loadLibrary()
-                
-    }
-    
-    var tagCount : Int{
-        get{
-            return tags.count
-        }
+        
     }
     
     func loadLibrary(){
         
+        //Dict init
         dict = self.makeEmptyTagsBooks(tags: self.tags)
         
-        for tag in self.tags{
+        for tag in dict.keys{
             
             var booksToInsert = BookSet()
             
-            if(tag == self.tags.first){
+            //Favourite books are saved separately, We need to check if a book is on the favourite list to add it first
+            if(tag == self.tags.first){ //The firs tag in the list is the favourite tag
                 for book in books{
                     if(Favourites.isFavourite(b: book)){
                         booksToInsert.insert(book)
                     }
                 }
             }else{
+                //for every other tag we have to check if the book has it
                 for book in books{
                     for tagInBook in book.tags{
                         if(tagInBook == tag){
@@ -64,12 +69,13 @@ class Library{
                 }
             }
             
-            dict[tag] = booksToInsert
+            dict[tag] = booksToInsert //Sets de books to a tag
             
         }
         
     }
     
+    //counts the number of books in a tag
     func bookCount(forTag tag: Tag) -> Int{
         guard let count = dict[tag]?.count else{
             return 0
@@ -78,6 +84,7 @@ class Library{
         return count
     }
     
+    //returns de books in a tag
     func books(forTag tag: Tag) throws -> BookSet?{
         
         guard let books = dict[tag] else{
@@ -88,6 +95,7 @@ class Library{
         
     }
     
+    //returns a book at an index and a tag
     func book(atIndex index: Int, forTag tag: Tag) throws -> Book? {
         
         guard let books = dict[tag] else{
@@ -99,10 +107,12 @@ class Library{
         
     }
     
+    //returns a tag name.
     func tagName(_ tag: Tag) -> String{
-        return tag.name.capitalized
+        return tag.name
     }
     
+    //Dict initiallizer
     func makeEmptyTagsBooks(tags: TagArray) -> BooksDictionary{
         
         var d = BooksDictionary()

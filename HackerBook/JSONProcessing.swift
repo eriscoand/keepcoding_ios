@@ -19,21 +19,26 @@ func decodeBook(book json: JSONDictonary) throws -> Book {
     
     var image = Data()
     
+    //Try to load the image from the json's url, if not it loads the bacon image
     if let urlImageString = json["image_url"] as? String {
-        if (!fileAlreadyExists(stringUrl: urlImageString)){
-            image = try saveToLocalStorage(stringUrl: urlImageString)
-        }else{
-            image = try dataFromStringUrl(stringUrl: urlImageString)
-        }
+        image = try getFileFrom(stringUrl: urlImageString)
     }else{
         let urlImageString = CONSTANTS.DEFAULT_IMAGE
-        image = try dataFromStringUrl(stringUrl: urlImageString)
+        if let defaultImageURL = Bundle.main.url(forResource: urlImageString){
+            image = try! Data(contentsOf: defaultImageURL)
+        }
     }
     
+    //We initially load the bacon ipsum pdf
     let defaultPDFURLString = CONSTANTS.DEFAULT_PDF
     guard let defaultPDFURL = Bundle.main.url(forResource: defaultPDFURLString),
         let pdf = try? Data(contentsOf: defaultPDFURL) else{
             throw HackerBookError.resourcePointedByUrlNotReachable
+    }
+    
+    //we will need the pdf url for the webview
+    guard let urlPDF = json["pdf_url"] as? String else{
+        throw HackerBookError.wrongJsonFormat
     }
 
     guard let title = json["title"] as? String else{
@@ -54,7 +59,8 @@ func decodeBook(book json: JSONDictonary) throws -> Book {
                 authors: authors,
                 tags: tags,
                 thumbnail: image,
-                pdf: pdf)
+                pdf: pdf,
+                urlPDF : urlPDF)
     
 }
 

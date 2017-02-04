@@ -40,20 +40,16 @@ class Author : Hashable  {
         return proxieForEquality()
     }
     
-    //MARK: - STATIC FUNC
+    //MARK: - Static functions
+    //from a string it returns a Set of Tags
     static func fromStringToSet(s : String) -> Set<Author>{
-        
         var ret = Set<Author>()
-        
         let arr = s.characters.split{$0 == ","}.map(String.init)
-        
         for each in arr{
             let author = Author(name: each)
             ret.insert(author)
         }
-        
         return ret
-        
     }
     
 }

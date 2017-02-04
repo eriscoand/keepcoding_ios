@@ -8,9 +8,10 @@
 
 import Foundation
 
-
+//Favourite persist - We use Standard UserDefaults. We only save the hashValue of a book (an int generated from the title)
 class Favourites {
     
+    //Add a book to the favourite list
     static func addFavourite(b: Book) {
         let defaults = UserDefaults.standard
         var books = defaults.object(forKey: CONSTANTS.FAVOURITES_NAME) as? [Int] ?? [Int]()
@@ -20,6 +21,7 @@ class Favourites {
         defaults.set(books, forKey: CONSTANTS.FAVOURITES_NAME)
     }
     
+    //Delete a book from the favourite list
     static func deleteFavourite(b: Book) {
         let defaults = UserDefaults.standard
         var books = defaults.object(forKey: CONSTANTS.FAVOURITES_NAME) as? [Int] ?? [Int]()
@@ -31,6 +33,7 @@ class Favourites {
         defaults.set(books, forKey: CONSTANTS.FAVOURITES_NAME)
     }
     
+    //Check if a book is on the favourite list.
     static func isFavourite(b: Book) -> Bool{
         let defaults = UserDefaults.standard
         let books = defaults.object(forKey: CONSTANTS.FAVOURITES_NAME) as? [Int] ?? [Int]()

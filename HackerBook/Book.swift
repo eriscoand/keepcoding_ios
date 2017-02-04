@@ -17,6 +17,7 @@ class Book : Hashable {
     let tags        :   Set<Tag>
     let thumbnail   :   Data
     let pdf         :   Data
+    let urlPDF      :   String
     
     //MARK: - Computed Properties
     var hashValue : Int {
@@ -25,6 +26,7 @@ class Book : Hashable {
         }
     }
     
+    //Loops throw the tags and returns a String
     var tagsString : String{
         get{
             var ret = ""
@@ -35,6 +37,7 @@ class Book : Hashable {
         }
     }
     
+    //Loops throw the authors and returns a String
     var authorsString : String{
         get{
             var ret = ""
@@ -51,13 +54,15 @@ class Book : Hashable {
          authors: Set<Author>,
          tags: Set<Tag>,
          thumbnail: Data,
-         pdf: Data){
+         pdf: Data,
+         urlPDF: String){
         
         self.title = title
         self.authors = authors
         self.tags = tags
         self.thumbnail = thumbnail
         self.pdf = pdf
+        self.urlPDF = urlPDF
         
     }
     
@@ -73,7 +78,7 @@ class Book : Hashable {
         return proxieForEquality()
     }
     
-    //MARK: - STATIC FUNC
+    //MARK: - STATIC FUNCTIONS
     static func from(array arr: [Book]) -> Set<Book>{
         var ret = Set<Book>()
         
@@ -85,6 +90,8 @@ class Book : Hashable {
     }
     
 }
+
+//MARK: - Extensions
 
 extension Book : Equatable{
     public static func ==(lhs: Book, rhs: Book) -> Bool{

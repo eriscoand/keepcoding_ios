@@ -23,9 +23,7 @@ class Tag : Hashable  {
     
     //MARK: - Initialization
     init(name: String){
-        
         self.name = name
-        
     }
     
     //MARK: - Conv initialization
@@ -40,28 +38,26 @@ class Tag : Hashable  {
         return proxieForEquality()
     }
     
-    //MARK: - STATIC FUNC
+    //MARK: - Static functions
+    //from a string it returns a Set of Tags
     static func fromStringToSet(s : String) -> Set<Tag>{
-        
         var ret = Set<Tag>()
-        
         let arr = s.characters.split{$0 == ","}.map(String.init)
-        
         for each in arr{
-            let tag = Tag(name: each.trimmingCharacters(in: .whitespacesAndNewlines))
+            let tag = Tag(name: each.trimmingCharacters(in: .whitespacesAndNewlines).capitalized)
             ret.insert(tag)
         }
-        
         return ret
-        
     }
     
+    //from a set it returns a sorted array of tags. It also adds the favourite tag in the first position
     static func fromSetToArray(s: Set<Tag>) -> [Tag]{
         
         var ret = [Tag]()
         let favouriteTag = Tag.init(name: CONSTANTS.FAVOURITES_NAME)
         ret.append(favouriteTag)
         
+        //Ordered!!
         for tag in s.sorted(by: { (s1: Tag, s2: Tag) -> Bool in return s1 < s2 }){
             ret.append(tag)
         }
@@ -71,6 +67,7 @@ class Tag : Hashable  {
     
 }
 
+//MARK: - Extensions
 extension Tag : Equatable{
     public static func ==(lhs: Tag, rhs: Tag) -> Bool{
         return lhs.proxieForEquality() == rhs.proxieForEquality()

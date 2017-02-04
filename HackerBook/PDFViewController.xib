@@ -1,20 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDFViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PDFViewController" customModule="HackerBook" customModuleProvider="target">
             <connections>
+                <outlet property="spinner" destination="SPp-x0-s1G" id="c08-az-0nK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="waj-qS-5gs" id="yn0-zp-2pX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waj-qS-5gs">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SPp-x0-s1G">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </activityIndicatorView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="SPp-x0-s1G" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4Ly-9F-pDa"/>
+                <constraint firstItem="waj-qS-5gs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CZP-T1-BgE"/>
+                <constraint firstItem="SPp-x0-s1G" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Dgw-Oh-LFB"/>
+                <constraint firstItem="SPp-x0-s1G" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="SdM-r5-ZLK"/>
+                <constraint firstAttribute="trailing" secondItem="waj-qS-5gs" secondAttribute="trailing" id="VNY-FK-vCm"/>
+                <constraint firstAttribute="trailing" secondItem="SPp-x0-s1G" secondAttribute="trailing" id="bYV-Q2-4fG"/>
+                <constraint firstAttribute="bottom" secondItem="SPp-x0-s1G" secondAttribute="bottom" id="gNl-xk-GLu"/>
+                <constraint firstItem="waj-qS-5gs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="it6-1x-AJg"/>
+                <constraint firstAttribute="bottom" secondItem="waj-qS-5gs" secondAttribute="bottom" id="kQc-GX-2Lg"/>
+                <constraint firstItem="SPp-x0-s1G" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="v2d-Lc-A95"/>
+            </constraints>
+            <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>
     </objects>
 </document>
