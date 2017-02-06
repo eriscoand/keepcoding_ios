@@ -17,4 +17,6 @@ struct CONSTANTS {
     
     static let FAVOURITES_NAME = "Favourites"
     
+    static let SECTION_HEIGHT = 30
+    
 }

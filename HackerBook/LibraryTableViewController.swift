@@ -96,6 +96,13 @@ class LibraryTableViewController: UITableViewController {
         return model.tagName(getTag(forSection: section))
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if(model.bookCount(forTag: getTag(forSection: section)) == 0){
+            return 0
+        }
+        return CGFloat(CONSTANTS.SECTION_HEIGHT)
+    }
+    
     private func nibRegistration(){
         let nib = UINib(nibName: "BookTableViewCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: BookTableViewCell.cellId)
